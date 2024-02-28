@@ -1,4 +1,4 @@
-const {brainstormDinner, shopForBeans} = require("./module.js");
+const {brainstormDinner, shopForBeans, soakTheBeans, cookTheBeans} = require("./module.js");
 
 //the below withConstructor function is function that returns a PROMISE 
 //which can also be written like withAsync function
@@ -37,3 +37,13 @@ async function getBeans() {
   }
 
 getBeans();
+
+//another async + await 
+async function makeBeans(){
+    const type = await shopForBeans();
+    const isSoft = await soakTheBeans(type);
+    const dinner = await cookTheBeans(isSoft);
+    console.log(dinner);
+}
+
+makeBeans();
