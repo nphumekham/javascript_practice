@@ -55,12 +55,23 @@ const failureHandle = (failureMessage) => {
     console.log(failureMessage);
 }
 
+//better examples to handle on fulfile and on reject of promises
+const onFulfill = (itemsArray) => {
+    console.log(`Items checked: ${itemsArray}`);
+    console.log(`Every item was available from the distributor. Placing order now.`);
+  };
+  
+  const onReject = (rejectionReason) => {
+      console.log(rejectionReason);
+  };
+
 //try the promise from another module + use THEN + use handlers
 //checkInventory(order).then(successHandle, failureHandle);
 
 //cleaner way to is to use THEN on successful case and CATCH on failure case
 //checkInventory(order).then(successHandle).catch(failureHandle);
 
+//chained promises -- DO NOT NEST PROMISE ---
 checkInventory(order).then((resolvedValue) => {
     return processPayment(resolvedValue);
 }).then((resolvedValue) => {
@@ -70,4 +81,14 @@ checkInventory(order).then((resolvedValue) => {
 }).catch((errorMessage) => {
     console.log(errorMessage);
 });
+
+//use promise.all(array of promises) -- if all fulfil -> return array of fulfil messages, else -> return reject
+const checkSunglasses = checkAvailability('sunglasses', 'Favorite Supply Co.');
+
+const checkPants = checkAvailability('pants', 'Favorite Supply Co.');
+
+const checkBags = checkAvailability('bags', 'Favorite Supply Co.');
+
+Promise.all([checkSunglasses, checkPants, checkBags]).then(onFulfill).catch(onReject);
+
 
