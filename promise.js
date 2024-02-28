@@ -1,3 +1,11 @@
+/* PROMISE - a proxy for a value not necessarily known when the promise is created. 
+It allows you to associate handlers with an asynchronous action's eventual success value or failure reason.
+---- 3 states of PROMISE are 
+---- 1. pending
+---- 2. fulfilled
+---- 3. rejected 
+*/
+
 const inventory = {
     sunglasses: 1900,
     pants: 1088,
