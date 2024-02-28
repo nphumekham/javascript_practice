@@ -58,7 +58,7 @@ const checkInventory = (order) => {
      console.log(`All of the items are in stock. The total cost of the order is ${total}.`);
      resolve([order, total]);
    } else {
-    
+
      reject(`The order could not be completed because some items are sold out.`);
    }     
 }, generateRandomDelay());
@@ -102,7 +102,26 @@ function generateRandomDelay() {
   return Math.floor(Math.random() * 2000);
 }
 
-module.exports = { checkInventory, processPayment, shipOrder };
+const checkAvailability = (itemName, distributorName) => {
+  console.log(`Checking availability of ${itemName} at ${distributorName}...`);
+  return new Promise((resolve, reject) => {
+      setTimeout(() => {
+          if (restockSuccess()) {
+              console.log(`${itemName} are in stock at ${distributorName}`)
+              resolve(itemName);
+          } else {
+              reject(`Error: ${itemName} is unavailable from ${distributorName} at this time.`);
+          }
+      }, 1000);
+  });
+};
+
+//a function that returns TRUE 80% of the time
+function restockSuccess() {
+  return (Math.random() > .2);
+}
+
+module.exports = { checkInventory, processPayment, shipOrder, checkAvailability };
 
 module.exports.circleArea = circleArea;
 
