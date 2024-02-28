@@ -160,5 +160,28 @@ const shopForBeans = () => {
 });
 }
 
+let soakTheBeans = (beanType) => {
+   return new Promise((resolve, reject) => {
+     console.log('Time to soak the beans.');
+    setTimeout(()=>{
+      console.log(`... The ${beanType} beans are softened.`);
+      resolve(true);
+      }, 1000);
+  });
+}
+
+let cookTheBeans = (isSoftened) => {
+  return new Promise((resolve, reject) => {
+    console.log('Time to cook the beans.');
+    setTimeout(()=>{
+      if (isSoftened) {
+        console.log('... The beans are cooked!');
+        resolve('\n\nDinner is served!');
+      }
+    }, 1000);
+  });
+}
+
+
 module.exports = { circleArea, squareArea, checkInventory, processPayment, 
-  shipOrder, checkAvailability, brainstormDinner, shopForBeans};
+  shipOrder, checkAvailability, brainstormDinner, shopForBeans, soakTheBeans, cookTheBeans};
