@@ -1,4 +1,5 @@
-const {brainstormDinner, shopForBeans, soakTheBeans, cookTheBeans, cookBeanSouffle} = require("./module.js");
+const {brainstormDinner, shopForBeans, soakTheBeans, cookTheBeans, cookBeanSouffle, 
+    cookBeans, steamBroccoli, cookRice, bakeChicken} = require("./module.js");
 
 //the below withConstructor function is function that returns a PROMISE 
 //which can also be written like withAsync function
@@ -58,4 +59,15 @@ async function hostDinnerParty(){
   }
   
   hostDinnerParty();
+
+  //use await later 
+  async function serveDinner(){
+    const vegetablePromise = steamBroccoli();
+    const starchPromise = cookRice();
+    const proteinPromise = bakeChicken();
+    const sidePromise = cookBeans();
+    console.log(`Dinner is served. We're having ${await vegetablePromise}, ${await starchPromise}, ${await proteinPromise}, and ${await sidePromise}.`); 
+  };
+  
+  serveDinner();
   
