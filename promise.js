@@ -41,7 +41,7 @@ const usingSTO = () => {
 setTimeout(usingSTO, 3000);
 
 //use the PROMISE from the module file
-const order = [['chair', 1], ['table', 3]];
+const order = [['sunglasses', 1]];
 
 //create success and failure handlers for the promise
 const successHandle = (successMessage) => {
@@ -54,3 +54,6 @@ const failureHandle = (failureMessage) => {
 
 //try the promise from another module + use THEN + use handlers
 checkInventory(order).then(successHandle, failureHandle);
+
+//cleaner way to is to use THEN on successful case and CATCH on failure case
+checkInventory(order).then(successHandle).catch(failureHandle);
