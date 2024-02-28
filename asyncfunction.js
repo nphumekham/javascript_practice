@@ -33,3 +33,24 @@ async function readFiles() {
 }
 
 readFiles();
+
+
+//the below withConstructor function is function that returns a PROMISE 
+//which can also be written like withAsync function
+function withConstructor(num){
+  return new Promise((resolve, reject) => {
+    if (num === 0){
+      resolve('zero');
+    } else {
+      resolve('not zero');
+    }
+  });
+}
+
+function withAsync(num){
+    if(num === 0){
+        return 'zero';
+    }else {
+        return 'not zero';
+    }
+}
