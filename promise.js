@@ -5,6 +5,7 @@ It allows you to associate handlers with an asynchronous action's eventual succe
 ---- 2. fulfilled
 ---- 3. rejected 
 */
+const {checkInventory} = require("./module.js");
 
 const inventory = {
     sunglasses: 1900,
@@ -38,3 +39,18 @@ const usingSTO = () => {
 
 //practice using setTimeout -- takes in 2 params (x, time in millisec)
 setTimeout(usingSTO, 3000);
+
+//use the PROMISE from the module file
+const order = [['chair', 1], ['table', 3]];
+
+//create success and failure handlers for the promise
+const successHandle = (successMessage) => {
+    console.log(successMessage);
+}
+
+const failureHandle = (failureMessage) => {
+    console.log(failureMessage);
+}
+
+//try the promise from another module + use TRY + use handlers
+checkInventory(order).try(successHandle, failureHandle);
