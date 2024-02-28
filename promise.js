@@ -21,4 +21,12 @@ const orderSunglasses = () => {
 
 const orderPromise = orderSunglasses();
 
-console.log(orderPromise);                      
+console.log(orderPromise);
+
+//this is just a function that logs a string
+const usingSTO = () => {
+    console.log("this is inside usingSTO.");
+}
+
+//practice using setTimeout -- takes in 2 params (x, time in millisec)
+setTimeout(usingSTO, 3000);
