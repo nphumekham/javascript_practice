@@ -52,5 +52,5 @@ const failureHandle = (failureMessage) => {
     console.log(failureMessage);
 }
 
-//try the promise from another module + use TRY + use handlers
-checkInventory(order).try(successHandle, failureHandle);
+//try the promise from another module + use THEN + use handlers
+checkInventory(order).then(successHandle, failureHandle);
