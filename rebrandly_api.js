@@ -10,35 +10,36 @@ const responseField = document.querySelector('#responseField');
 
 // Asynchronous functions
 const shortenUrl = async () => {
-	const urlToShorten = inputField.value;
-  const data = JSON.stringify({destination: urlToShorten});
-  try {
-    const response = await fetch(
-      url, {
-        method: 'POST',
-        body: data,
-        headers: {
-          'Content-type': 'application/json',
-          'apikey': apiKey
+    const urlToShorten = inputField.value;
+    const data = JSON.stringify({ destination: urlToShorten });
+    try {
+        const response = await fetch(
+            url, {
+            method: 'POST',
+            body: data,
+            headers: {
+                'Content-type': 'application/json',
+                'apikey': apiKey
+            }
         }
-      }
-    );
-		if(response.ok){
-      const jsonResponse = await response.json();
-      renderResponse(jsonResponse);
+        );
+        if (response.ok) {
+            const jsonResponse = await response.json();
+            renderResponse(jsonResponse);
+        }
+    } catch (error) {
+        console.log(error);
     }
-  } catch (error) {
-    console.log(error);
-  }
 }
 
 // Clear page and call Asynchronous functions
 const displayShortUrl = (event) => {
-  event.preventDefault();
-  while(responseField.firstChild){
-    responseField.removeChild(responseField.firstChild);
-  }
-  shortenUrl();
+    event.preventDefault();
+    while (responseField.firstChild) {
+        responseField.removeChild(responseField.firstChild);
+    }
+    console.log("Im in display Short URL");
+    shortenUrl();
 }
 
 shortenButton.addEventListener('click', displayShortUrl);

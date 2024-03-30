@@ -3,8 +3,10 @@ const renderResponse = (res) => {
     // Displays either message depending on results
     if(res.errors){
       responseField.innerHTML = "<p>Sorry, couldn't format your URL.</p><p>Try again.</p>";
+      console.log(res.errors);
     } else {  
       responseField.innerHTML = `<p>Your shortened url is: </p><p> ${res.shortUrl} </p>`;
+      console.log("In render good Response");
     }
   }
   
